@@ -355,10 +355,10 @@
         margin-bottom: 18px;
       }
     .hero {
-      flex-direction: column;
       align-items: center;
       gap: 18px;
       padding: 18px 2vw;
+      margin-bottom: 20px;
     }
     .hero-content {
       text-align: center;
@@ -802,7 +802,7 @@ nav, .navbar {
 @media (max-width: 900px) {
   .testimonial-flex { flex-direction: column; gap: 20px; }
   .testimonial-img-col { margin-bottom: 20px; }
-  .testimonial-carousel { align-items: flex-start; }
+  .testimonial-carousel { align-items: center; }
 }
 @media (max-width: 600px) {
   .testimonial-img-col > div[style*="position:relative"] {

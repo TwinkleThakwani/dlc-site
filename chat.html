@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DigiBot - Smooth Category Carousel</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <nav>
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="chat.html" class="active">AI Chat</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="about.html">About Us</a>
+  </nav>
+  <br>
+<div id="chatContainer">
+  <div id="headerBar">
+    📂 <span id="currentCategory">WhatsApp</span>
+  </div>
+  <div id="categoryWrapper">
+    <div id="scrollLeft">&#8249;</div>
+    <div id="categoryDropdown"></div>
+    <div id="scrollRight">&#8250;</div>
+  </div>
+
+<canvas id="chatCanvas" width="420" height="450"></canvas>
+<div id="suggestionBar"></div>
+
+<div id="inputWrapper">
+  <input type="text" id="inputCanvas" placeholder="Type a message..." />
+  <button id="sendBtn">➤</button>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>

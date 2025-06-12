@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feedback | DigiBuddy</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="chat.html">AI Chat</a>
+    <a href="feedback.html" class="active">Feedback</a>
+    <a href="about.html">About Us</a>
+  </nav>
+  <div class="feedback-container">
+    <div class="feedback-title">We value your feedback!</div>
+    <form class="feedback-form">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Optional">
+      <label for="lang">Preferred Language</label>
+      <select id="lang" name="lang">
+        <option>English</option>
+        <option>Hindi</option>
+        <option>Other</option>
+      </select>
+      <label for="feedback">Your Suggestions / Feedback</label>
+      <textarea id="feedback" name="feedback" rows="4" required></textarea>
+<button type="submit" style="padding: 12px 32px; width: 100%;">Submit</button>
+    </form>
+    <div style="text-align:center;color:#a9f9e1;font-size:1rem;margin-top:10px;">
+      Thank you for helping us improve DigiBuddy!
+    </div>
+  </div>
+</body>
+</html>

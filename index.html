@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DigiBuddy • Digital Literacy</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>/* GENERAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.vector-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+body {
+  position: relative;
+  /* ...existing styles... */
+}
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      margin: 0;
+      /* Animated gradient */
+      background: linear-gradient(-45deg, #0d0d0d, #00a884, #005c4b, #1a1a1a, #141414, #0b0b0b, #a9f9e1);
+      background-size: 400% 400%;
+      animation: gradientBG 18s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      25% {
+        background-position: 50% 100%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      75% {
+        background-position: 50% 0%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+/* NAVBAR */
+.navbar {
+  background-color: #141414;
+  margin: 0;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  top: 0;
+  z-index: 999;
+}
+.navbar .logo {
+  color: #a9f9e1;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.nav-links li a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links li a:hover {
+  color: #a9f9e1;
+}
+.btn-primary {
+  background-color: #a9f9e1;
+  color: #000;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-primary:hover {
+  background-color: #7cf0d4;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  z-index: 1001;
+  margin-left: 10px;
+}
+.hamburger span {
+  height: 4px;
+  width: 100%;
+  background: #a9f9e1;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+  display: block;
+}
+@media (max-width: 700px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 10px 10px;
+    position: relative;
+  }
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    background: #101c18e6;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    padding: 18px 0 18px 0;
+    gap: 0;
+    display: none;
+    box-shadow: 0 8px 32px #00a88433;
+    z-index: 1000;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-links li {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-links li a {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 1.15rem;
+    border-radius: 0;
+    color: #a9f9e1;
+    border-bottom: 1px solid #222;
+  }
+  .btn-primary {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* HERO SECTION */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 60px 30px;
+  flex-wrap: wrap;
+
+}
+.hero img {
+  width: 280px;
+  border-radius: 12px;
+}
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+.hero-content h1 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+}
+.hero-content p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+.btn-cta {
+  background-color: #a9f9e1;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* PROGRAM SECTION */
+.program-overview {
+  padding: 60px 30px;
+  background-color: #151a17fa;
+  text-align: center;
+}
+.program-overview h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.program-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.program-grid div {
+  background: #1f1f1f;
+  padding: 20px;
+  border-radius: 12px;
+  width: 280px;
+  text-align: left;
+}
+.program-grid h3 {
+  color: #a9f9e1;
+  margin-bottom: 10px;
+}
+.program-grid ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #ddd;
+}
+
+/* WHY SECTION */
+.console-callout {
+  padding: 50px 30px;
+  background: #151515;
+  text-align: center;
+}
+.console-callout h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+.console-callout p {
+  font-size: 1.1rem;
+  color: #e3e3e3;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  padding: 50px 30px;
+  background: #0521195d;
+  text-align: center;
+}
+.testimonials h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.testimonials blockquote {
+  font-style: italic;
+  color: #ccc;
+  margin: 15px auto;
+  max-width: 600px;
+}
+.testimonials a {
+  color: #a9f9e1;
+  text-decoration: underline;
+}
+    .main-content {
+      flex: 1 0 auto;
+    }
+/* SIGNUP */
+.signup {
+  padding: 60px 30px;
+  background: #141414;
+  text-align: center;
+}
+.signup h2 {
+  font-size: 2.25rem;
+  margin-bottom: 20px;
+}
+.signup p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+.signup .note {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+
+</style>
+</head>
+<body>
+<!-- Replace your <nav class="navbar"> ... </nav> with the following -->
+<nav class="navbar">
+  <a href="index.html" class="logo">DigiBuddy</a>
+  <div class="hamburger" id="hamburger-menu" aria-label="Open navigation" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="tutorials.html">Tutorials</a></li>
+    <li><a href="chat.html">AI Chat</a></li>
+    <li><a href="feedback.html">Feedback</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="#signup" class="btn-primary">Enroll Now</a>
+</nav>
+
+<header class="hero" id="about">
+  <div class="hero-content">
+    <h1>Help your parents &amp; elders master digital life</h1>
+    <p>Gift them skills—WhatsApp, UPI, Google Maps, online safety &amp; more—delivered in simple Hindi/English. Just ₹499.</p>
+    <a href="#signup" class="btn-cta">Enroll Now – ₹499 💡</a>
+  </div>
+  <!-- Collage of 4 floating images -->
+  <div style="position:relative;width:320px;min-width:200px;max-width:90vw;height:320px;display:flex;align-items:center;justify-content:center;">
+    <!-- Main (largest) image -->
+    <img 
+      src="imgs/yey.jpg"
+      alt="Happy parent celebrating"
+      style="
+        position:absolute;
+        left:30px;
+        top:40px;
+        width:170px;
+        height:210px;
+        object-fit:cover;
+        border-radius:22px;
+        border: inset 2px #a9f9e1;
+        box-shadow:0 8px 32px #00a88433;
+        background:#0e2b1e;
+        z-index:2;
+        animation: levitate 4.5s ease-in-out infinite;
+      "
+      class="hero-float-img"
+    >
+    <!-- Top left small image -->
+    <img 
+      src="imgs/help.jpg"
+      alt="Child helping parent"
+      style="
+        position:absolute;
+        left:-38px;
+        top:-10px;
+        width:130px;
+        height:100px;
+        object-fit:cover;
+        border-radius:16px;
+        box-shadow:0 4px 18px #00a88444;
+        border: inset 1px #a9f9e1;
+        background:#0e2b1e;
+        z-index:3;
+        animation: levitate 4.5s ease-in-out infinite;
+        animation-delay:1.2s;
+      "
+      class="hero-float-img"
+    >
+    <!-- Top right small image (move closer to center/left) -->
+  <img 
+      src="imgs/girl.jpg"
+      alt="Smiling girl"
+      style="
+        position:absolute;
+        left:-50px;
+        bottom:-10px;
+        width:140px;
+        height:120px;
+        object-fit:cover;
+        border-radius:22px;
+        box-shadow:0 8px 32px #00a88433;
+        border: inset 2px #a9f9e1;
+        background:#0e2b1e;
+        z-index:3;
+        animation: levitate 4.5s ease-in-out infinite;
+        animation-delay:2.1s;
+      "
+      class="hero-float-img"
+    >
+    <!-- Bottom right small image (move closer to center/left) -->
+    <img 
+    src="imgs/mobile.jpg"
+      alt="Parent using smartphone"
+      style="
+        position:absolute;
+        left:150px;
+        bottom:30px;
+        width:130px;
+        height:100px;
+        object-fit:cover;
+        border-radius:16px;
+        box-shadow:0 4px 18px #00a88444;
+        border: inset 1px #a9f9e1;
+        background:#0e2b1e;
+        z-index:3;
+        animation: levitate 4.5s ease-in-out infinite;
+        animation-delay:2.8s;
+      "
+      class="hero-float-img"
+    >
+  </div>
+</header>
+</style>
+    <section id="program" class="program-overview">
+      <h2>What You’ll Learn</h2>
+      <div class="program-grid">
+        <div>
+          <h3>App Tutorials</h3>
+          <ul>
+            <li>WhatsApp & Telegram</li>
+            <li>UPI & Payments: GPay, PayTM, PhonePe</li>
+            <li>Zomato/Swiggy, Ola/Uber, Maps</li>
+            <li>Online Shopping: Amazon, Flipkart</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Online Safety & Trends</h3>
+          <ul>
+            <li>Recognize and avoid scams</li>
+            <li>Understanding meme, tweet, viral culture</li>
+            <li>Safe browsing & social media tips</li>
+            <li>Privacy settings & data safety</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Lifestyle Extras</h3>
+          <ul>
+            <li>Health & fitness tips</li>
+            <li>Communication basics</li>
+            <li>Dance, style & confidence</li>
+            <li>Keeping up with trends</li>
+            <li>Helping with understanding GenZ and GenAlpha 😉</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- ...existing code... -->
+
+    </section>
+    
+   
+    <section id="how-it-works" style="background: radial-gradient(circle at 25% 75%, #05312680 0%, #0a1a15 50%,#084c3b7b 50% );padding:60px 30px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;max-width:1100px;margin:0 auto;">
+        <!-- Left: Illustration or photo -->
+        <div style="flex:0 0 320px;max-width:90vw;">
+          <img src="https://www.collegetips.in/images/bb5.gif" alt="How DigiBuddy Works" style="width:100%;border-radius:18px;box-shadow:0 8px 32px #00a88433;background:#0e2b1e;">
+        </div>
+        <!-- Right: Steps -->
+        <div style="flex:1;min-width:260px;">
+          <h2 style="color:#a9f9e1;margin-bottom:18px;font-size: 2rem;">How It Works?</h2>
+          <ol style="color:#eee;font-size:1.13rem;line-height:1.7;padding-left:22px;">
+            <li><strong>Enroll:</strong> Pay the one-time fee and share your parent’s WhatsApp number.</li>
+            <li><strong>Get Added:</strong> We add your parent/elder to a private WhatsApp group.</li>
+            <li><strong>Learn Daily:</strong> They receive simple video, audio, and text lessons in Hindi/English—one topic at a time.</li>
+            <li><strong>Ask Doubts:</strong> They can ask questions anytime—our team and bot reply quickly.</li>
+            <li><strong>Practice & Enjoy:</strong> Fun quizzes, reminders, and friendly support keep them learning and smiling!</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+
+<section class="program-overview" style="background: #1f1f1f; padding: 60px 30px; position:relative; overflow:hidden;">
+  <!-- Irregular & scattered blurred green SVG shapes, all animated -->
+  <svg width="100%" height="100%" viewBox="0 0 700 260" fill="none"
+       style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;">
+    <!-- Large ellipse, top left -->
+    <ellipse cx="80" cy="50" rx="70" ry="28" fill="#00ffb0" opacity="0.18" filter="url(#blur1)">
+      <animate attributeName="cy" values="50;80;50" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="80;100;80" dur="10s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Medium ellipse, top right -->
+    <ellipse cx="600" cy="40" rx="50" ry="20" fill="#a9f9e1" opacity="0.14" filter="url(#blur2)">
+      <animate attributeName="cy" values="40;60;40" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="600;630;600" dur="11s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Small ellipse, left mid -->
+    <ellipse cx="120" cy="160" rx="30" ry="12" fill="#00e676" opacity="0.13" filter="url(#blur3)">
+      <animate attributeName="cy" values="160;180;160" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="120;100;120" dur="9s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Irregular ellipse, bottom right -->
+    <ellipse cx="650" cy="200" rx="60" ry="24" fill="#00ffb0" opacity="0.12" filter="url(#blur1)">
+      <animate attributeName="cy" values="200;230;200" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="650;670;650" dur="8s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Small ellipse, center -->
+    <ellipse cx="350" cy="120" rx="40" ry="16" fill="#a9f9e1" opacity="0.11" filter="url(#blur2)">
+      <animate attributeName="cy" values="120;140;120" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="350;370;350" dur="10s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Tiny ellipse, random -->
+    <ellipse cx="500" cy="90" rx="18" ry="7" fill="#00e676" opacity="0.15" filter="url(#blur3)">
+      <animate attributeName="cy" values="90;110;90" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="500;520;500" dur="7s" repeatCount="indefinite"/>
+    </ellipse>
+    <defs>
+      <filter id="blur1"><feGaussianBlur stdDeviation="22"/></filter>
+      <filter id="blur2"><feGaussianBlur stdDeviation="16"/></filter>
+      <filter id="blur3"><feGaussianBlur stdDeviation="10"/></filter>
+    </defs>
+  </svg>
+  <div style="position:relative;z-index:1;">
+    <h2>Why Choose DigiBuddy?</h2>
+    <div class="features">
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712108.png" alt="Learn">
+        <h4>Learn Anytime</h4>
+        <p>Watch videos, listen to voice notes, read texts in Hindi/English.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Chat">
+        <h4>Instant Help</h4>
+        <p>Ask questions & get bot answers 24/7.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2721/2721296.png" alt="Fun">
+        <h4>Fun & Facts</h4>
+        <p>Enjoy jokes, quotes & brain-tickling facts anytime.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Secure">
+        <h4>Safe & Friendly</h4>
+        <p>Private, secure & always there for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="why-choose" class="console-callout" style="position:relative;overflow:hidden; padding: 30px 10px;">
+  <!-- Top Right Confetti -->
+  <svg width="80" height="80" viewBox="0 0 60 60" fill="none"
+       style="position:absolute;top:0;right:0;z-index:1;opacity:0.38;pointer-events:none;">
+    <circle cx="10" cy="10" r="5" fill="#00ffb0"/>
+    <circle cx="30" cy="20" r="4" fill="#a9f9e1"/>
+    <rect x="40" y="8" width="7" height="7" rx="2" fill="#fff176"/>
+    <rect x="20" y="40" width="5" height="5" rx="2.5" fill="#ff4081"/>
+    <circle cx="50" cy="30" r="4" fill="#00e676"/>
+  </svg>
+  <!-- Bottom Left Confetti -->
+  <svg width="80" height="80" viewBox="0 0 60 60" fill="none"
+       style="position:absolute;bottom:0;left:0;z-index:1;opacity:0.38;pointer-events:none;">
+    <circle cx="15" cy="45" r="5" fill="#00ffb0"/>
+    <circle cx="35" cy="50" r="4" fill="#a9f9e1"/>
+    <rect x="8" y="40" width="7" height="7" rx="2" fill="#fff176"/>
+    <rect x="40" y="20" width="5" height="5" rx="2.5" fill="#ff4081"/>
+    <circle cx="30" cy="10" r="4" fill="#00e676"/>
+  </svg>
+  <!-- Bottom Right Confetti -->
+  <svg width="80" height="80" viewBox="0 0 60 60" fill="none"
+       style="position:absolute;bottom:0;right:0;z-index:1;opacity:0.38;pointer-events:none;">
+    <circle cx="50" cy="50" r="5" fill="#00ffb0"/>
+    <circle cx="45" cy="35" r="4" fill="#a9f9e1"/>
+    <rect x="48" y="8" width="7" height="7" rx="2" fill="#fff176"/>
+    <rect x="20" y="40" width="5" height="5" rx="2.5" fill="#ff4081"/>
+    <circle cx="10" cy="30" r="4" fill="#00e676"/>
+  </svg>
+  <!-- Top Left Confetti -->
+  <svg width="80" height="80" viewBox="0 0 60 60" fill="none"
+       style="position:absolute;top:0;left:0;z-index:1;opacity:0.38;pointer-events:none;">
+    <circle cx="10" cy="10" r="5" fill="#00ffb0"/>
+    <circle cx="20" cy="30" r="4" fill="#a9f9e1"/>
+    <rect x="8" y="40" width="7" height="7" rx="2" fill="#fff176"/>
+    <rect x="40" y="20" width="5" height="5" rx="2.5" fill="#ff4081"/>
+    <circle cx="30" cy="50" r="4" fill="#00e676"/>
+  </svg>
+  <div style="position:relative;z-index:1;">
+        <h2>Why Not Free?</h2>
+    <p>
+      We keep the price low so everyone can join, but not free—because quality content, real support, and zero spam cost money. Your fee pays for expert teachers, helpful staff, and a safe, ad-free experience for your parents. No hidden charges, no selling your data—just honest learning for the price of a pizza 🍕.
+    </p>
+  </div>
+  </div>
+</section>
+
+
+<section id="testimonials" class="testimonials" style="background: #0521195d; padding-bottom: 20px; text-align: left; position:relative;">
+  <style>
+    .testimonial-flex {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 300px; /* Increased gap for space between stories and images */
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testimonial-img-col {
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      order: 2;
+    }
+    .testimonial-carousel {
+      max-width: 600px;
+      margin-left: 0;
+      position: relative;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      flex: 1;
+      order: 1;
+    }
+  .testimonial-slide {
+    display: none;
+    font-style: italic;
+    background: #101c18e6;
+    color: #fff;
+    font-size: 1.18rem;
+    line-height: 1.6;
+    font-weight: 500;
+    min-height: 90px;
+    padding: 22px 28px 22px 28px;
+    margin-bottom: 10px;
+    border-radius: 18px 18px 18px 6px;
+    border: 2px solid #00a884;
+    box-shadow: 0 4px 24px #00a88422;
+    position: relative;
+    max-width: 420px;
+    transition: opacity 0.5s;
+    text-align: left;
+    animation: fadeIn 0.7s;
+  }
+    .testimonial-slide.active {
+      display: block;
+      opacity: 1;
+      animation: fadeIn 0.7s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .testimonial-carousel-controls {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #a9f9e1;
+      opacity: 0.4;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .testimonial-dot.active {
+      opacity: 1;
+      background: #00a884;
+    }
+    .testimonial-arrow {
+      background: none;
+      border: none;
+      color: #a9f9e1;
+      font-size: 1.7rem;
+      cursor: pointer;
+      padding: 0 10px;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+    .testimonial-arrow:hover {
+      color: #fff;
+    }
+    .testimonial-author {
+      display: block;
+      margin-top: 18px;
+      font-size: 1.1rem;
+      color: #a9f9e1;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 900px) {
+      .testimonial-flex { flex-direction: column; gap: 20px; }
+      .testimonial-img-col { margin-bottom: 20px; }
+      .testimonial-carousel { align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .testimonial-slide {
+        font-size: 1.1rem;
+        min-height: 80px;
+      }
+      .testimonial-img-col > div { width: 140px !important; }
+    }
+    .testimonial-float-img {
+      animation: levitate 4.5s ease-in-out infinite;
+      box-shadow: 0 8px 32px #00a88433;
+      border-radius: 18px;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+      width: 220px;
+      max-width: 90vw;
+      margin-bottom: 18px;
+      margin-top: 18px;
+      background: #0e2b1e;
+    }
+    .testimonial-float-img.second {
+      animation-delay: 2.2s;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    @keyframes levitate {
+      0%   { transform: translateY(0px);}
+      50%  { transform: translateY(-18px);}
+      100% { transform: translateY(0px);}
+    }
+  </style>
+  <h2 style="color:#a9f9e1; margin-bottom: 30px; font-size:2.1rem; padding-left:15px;">What Parents Say,</h2>
+  <div class="testimonial-flex">
+    <!-- Left: Carousel -->
+    <div class="testimonial-carousel" id="testimonial-carousel">
+      <div class="testimonial-slide active">
+        “Mere bache ne mujhe itna accha gift diya hai… ab main khud taxi book kar leti hoon!”
+        <span class="testimonial-author">– Mrs. Kalindi Mishra</span>
+      </div>
+      <div class="testimonial-slide">
+        “Now I have a Facebook account with 200 friends!”
+        <span class="testimonial-author">– Mrs. Rosy Rodricks</span>
+      </div>
+      <div class="testimonial-slide">
+        “I never thought I could send money online. Now I help my friends with UPI.”
+        <span class="testimonial-author">– Mr. Suresh Sharma</span>
+      </div>
+      <div class="testimonial-slide">
+        “My son is proud that I can order food and cabs myself. Thank you DigiBuddy!”
+        <span class="testimonial-author">– Mrs. Anita Verma</span>
+      </div>
+      <div class="testimonial-slide">
+        “I used to fear online scams. Now I know how to stay safe and spot fake messages.”
+        <span class="testimonial-author">– Mr. Rajendra Singh</span>
+      </div>
+      <div class="testimonial-slide">
+        “The videos are so simple and in Hindi. I watch them with my husband every day.”
+        <span class="testimonial-author">– Mrs. Shanti Devi</span>
+      </div>
+      <div class="testimonial-carousel-controls">
+        <button class="testimonial-arrow" id="testimonial-prev" aria-label="Previous testimonial">&#8592;</button>
+        <button class="testimonial-dot active"></button>
+        <button class="testimonial-dot"></button>
+        <button class="testimonial-dot"></button>
+        <button class="testimonial-dot"></button>
+        <button class="testimonial-dot"></button>
+        <button class="testimonial-dot"></button>
+        <button class="testimonial-arrow" id="testimonial-next" aria-label="Next testimonial">&#8594;</button>
+      </div>
+     
+    </div>
+    <!-- Right: Levitating images -->
+    <div class="testimonial-img-col">
+      <div style="position:relative;width:320px;max-width:400vw;">
+        <img 
+          src="https://images.unsplash.com/photo-1642436751426-14d28036e773?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGtpZCUyMGhlbHBpbmclMjBwYXJlbnRzJTIwdXNpbmclMjBtb2JpbGV8ZW58MHx8MHx8fDA%3D" 
+          alt="Kid helping parents with mobile" 
+          class="testimonial-float-img"
+          style="position:relative;z-index:2;border: #005c4b;"
+        >
+        <!-- Overlapping bottom-left small image -->
+        <img 
+          src="imgs/learn.jpg"
+          alt="Learning moment"
+          class="testimonial-float-img"
+          style="
+            position:absolute;
+            left:-63px;
+            bottom:-18px;
+            width:110px;
+            height: 100px;
+            z-index:4;
+            box-shadow:0 2px 8px #00a88455;
+            border: #005c4b inset 1px;
+            border-radius:10px;
+            animation-delay:1.1s;
+            margin:0;
+            background:#0e2b1e;
+            pointer-events:none;
+          "
+        >
+        <img 
+          src="imgs/smile.jpg"
+          alt="Happy parent using smartphone"
+          class="testimonial-float-img second"
+          style="
+            position:absolute;
+            border: #005c4b inset 1px;
+            top:-33px;
+            right:-13px;
+            width:140px;
+            height: 90px;
+            max-width:45vw;
+            z-index:3;
+            box-shadow:0 4px 18px #00a88444;
+            border-radius:14px;
+            animation-delay:2.2s;
+            margin:0;
+            background:#0e2b1e;
+          "
+        >
+         <!-- Top left new image -->
+    <img 
+      src="https://plus.unsplash.com/premium_photo-1661641755017-53b5b9d4be63?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a2lkJTIwaGVscGluZyUyMHBhcmVudHMlMjB1c2luZyUyMG1vYmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+      alt="Kid helping parent with mobile"
+      class="testimonial-float-img"
+      style="
+        position:absolute;
+        left:-65px;
+        top:-65px;
+        width:110px;
+        height:100px;
+        z-index:4;
+        box-shadow:0 2px 8px #00a88455;
+        border: #005c4b inset 1px;
+        border-radius:14px;
+        animation-delay:0.7s;
+        margin:0;
+        background:#0e2b1e;
+        pointer-events:none;
+      "
+    >
+
+      </div>
+    </div>
+  </div>
+  <script>
+    // Centered, minimal carousel logic
+    (function() {
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const dots = document.querySelectorAll('.testimonial-dot');
+      const prev = document.getElementById('testimonial-prev');
+      const next = document.getElementById('testimonial-next');
+      let idx = 0;
+      function showSlide(i) {
+        slides.forEach((s, j) => {
+          s.classList.toggle('active', j === i);
+          dots[j].classList.toggle('active', j === i);
+        });
+        idx = i;
+      }
+      prev.onclick = function() {
+        showSlide((idx - 1 + slides.length) % slides.length);
+      };
+      next.onclick = function() {
+        showSlide((idx + 1) % slides.length);
+      };
+      dots.forEach((dot, i) => {
+        dot.onclick = () => showSlide(i);
+      });
+      setInterval(() => {
+        showSlide((idx + 1) % slides.length);
+      }, 8000);
+    })();
+   const hamburger = document.getElementById('hamburger-menu');
+const navLinks = document.getElementById('nav-links');
+
+function toggleNav() {
+  navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open');
+}
+
+hamburger.addEventListener('click', toggleNav);
+hamburger.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') toggleNav();
+});
+window.addEventListener('click', function(e) {
+  if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+  }
+}); 
+  </script>
+</section>
+<section id="faq" class="program-overview" style="background: radial-gradient(circle at 60% 40%, #002413 0%, #000000 90%, #053028 95%);padding:60px 30px;">
+  <h2 style="color:#a9f9e1;margin-bottom:30px;font-size: 2.3rem;">Frequently Asked Questions</h2>
+  <div class="faq-list" style="max-width:800px;margin:0 auto;text-align:left;">
+    <details style="margin-bottom:18px;">
+      <summary><strong>What is the duration of the Program?</strong></summary>
+      <div>This is a 2 months program designed to help parents become comfortable with modern technology.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>Will my parents be able to understand the videos?</strong></summary>
+      <div>Yes! The videos are made in simple Hindi as well as English, with easy step-by-step explanations. No technical jargon is used, making it very beginner-friendly.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>What if my parents have doubts while learning?</strong></summary>
+      <div>We provide a support system where they can ask their doubts through WhatsApp, and our team will assist them with solutions.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>My parents are not very tech-savvy. Will they be able to learn?</strong></summary>
+      <div>Absolutely! This course is designed specifically for beginners. The videos use simple language and real-life examples so parents can easily follow along.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>How will we learn?</strong></summary>
+      <div>You will receive voice notes, learning videos and instructions through WhatsApp.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>Is this course live or pre-recorded?</strong></summary>
+      <div>All the videos are pre-recorded and delivered via WhatsApp, so parents can watch them at their own pace whenever they are free.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>What if my parents don't have WhatsApp?</strong></summary>
+      <div>Since most people use WhatsApp, we deliver the course through it. If your parents don't have WhatsApp, you can enroll using your number and forward the videos to them, or help them install WhatsApp.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>How long are the videos?</strong></summary>
+      <div>Each video is short and to the point—around 5-10 minutes, so parents can easily watch and understand them without feeling overwhelmed.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>Will this course also cover online fraud and safety tips?</strong></summary>
+      <div>Yes! We understand that online safety is important. Our course will teach parents how to avoid scams, recognize fake messages, and keep their online transactions secure.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>Can I gift this course to someone else, like my uncle/aunt or grandparents?</strong></summary>
+      <div>Of course! This course is not just for parents—it's for any elder who wants to learn technology. You can enroll them, and they’ll receive the lessons just like your parents.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>Can my parents access the videos after the completion of the course?</strong></summary>
+      <div>Yes! Since the videos are sent via WhatsApp, they will remain in their chat, so they can rewatch them anytime in the future.</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>Is there any refund policy?</strong></summary>
+      <div>Since this is a digital course, once the enrollment is done, we don't offer refunds. But we ensure that the course delivers great value!</div>
+    </details>
+    <details style="margin-bottom:18px;">
+      <summary><strong>Any Other Terms and Conditions?</strong></summary>
+      <div>
+        <ol style="padding-left:18px;">
+          <li>The company holds the right to admission to the program. Decision made by the management in case of any dispute will be final and will remain unchanged.</li>
+          <li>Our team will always keep your comfort and satisfaction as a top most priority and so we expect a collaborative and respectful approach from members for anything in hand.</li>
+          <li>Every activity that is a part of this program will be covered by our video production team and will be posted on social media and/or will be published on our forthcoming videos/post eventually. If any participant is in resentment with the same, it is to be informed duly before the commencement of the event.</li>
+          <li>Once final photos/videos or write ups are captured and published on social media and the forthcoming program, it will not be removed or deleted under any circumstance. The Company cannot be held responsible for any sort of controversial or inappropriate response.</li>
+          <li>We do not accept cash payment and will hold no responsibility for the sum if you have forced a cash payment for the service.</li>
+          <li>No refunds on participation fee will be allowed, even in case of any rescheduling. You are entitled to a refund in case of an untimely cancellation of the program altogether.</li>
+          <li>Nuisance of any kind, after the registration process will not be taken softly. Any kind of misconduct initiated by any participant will be strictly dealt with, extreme measures including termination of their participation immediately.</li>
+          <li>The content registered under your name should be original and not be pasted from another source. In case, a piece of content is found plagiarized during the background check, the sole responsibility will be of the participant.</li>
+          <li>The company reserves the right to change the terms, conditions, and notices under which the program is offered. Member shall be responsible for regularly reviewing these terms and conditions with the team. In case of any type of dispute, the last decision is taken by the company only.</li>
+          <li>The company requires that the participant obtains parental consent before they start their tenure. This is required so as to assure that the parents/guardians would be aware and non-objectionable towards any type of content that would be released in the future by the Company.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</section>
+<section id="signup" class="signup" style="position:relative;overflow:hidden;">
+  <!-- Top Left: 3 animated ellipses (smaller, matching bottom left) -->
+  <svg width="220" height="120" viewBox="0 0 220 120" fill="none"
+       style="position:absolute;top:-30px;left:-40px;width:220px;height:120px;z-index:0;">
+    <defs>
+      <linearGradient id="signupGreenishTL" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#a9f9e1" stop-opacity="0.7">
+          <animate attributeName="stop-color" values="#a9f9e1;#eafff7;#a9f9e1" dur="7s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="100%" stop-color="#fff" stop-opacity="0.8">
+          <animate attributeName="stop-color" values="#fff;#d6fff2;#fff" dur="7s" repeatCount="indefinite"/>
+        </stop>
+      </linearGradient>
+    </defs>
+    <!-- Big ellipse -->
+    <ellipse cx="80" cy="30" rx="50" ry="20" fill="url(#signupGreenishTL)">
+      <animate attributeName="cy" values="30;50;30" dur="7s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Medium ellipse -->
+    <ellipse cx="140" cy="50" rx="30" ry="12" fill="url(#signupGreenishTL)">
+      <animate attributeName="cy" values="50;30;50" dur="9s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Small ellipse -->
+    <ellipse cx="50" cy="80" rx="18" ry="7" fill="url(#signupGreenishTL)">
+      <animate attributeName="cy" values="80;65;80" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
+  </svg>
+  <!-- Top Right: 3 animated ellipses (smaller, matching bottom right) -->
+  <svg width="180" height="100" viewBox="0 0 180 100" fill="none"
+       style="position:absolute;top:-20px;right:-30px;width:180px;height:100px;z-index:0;">
+    <defs>
+      <linearGradient id="signupGreenishTR" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#a9f9e1" stop-opacity="0.7">
+          <animate attributeName="stop-color" values="#a9f9e1;#eafff7;#a9f9e1" dur="8s" repeatCount="indefinite"/>
+        </stop>
+        <stop offset="100%" stop-color="#fff" stop-opacity="0.8">
+          <animate attributeName="stop-color" values="#fff;#d6fff2;#fff" dur="8s" repeatCount="indefinite"/>
+        </stop>
+      </linearGradient>
+    </defs>
+    <!-- Big ellipse -->
+    <ellipse cx="120" cy="30" rx="40" ry="16" fill="url(#signupGreenishTR)">
+      <animate attributeName="cy" values="30;50;30" dur="8s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Medium ellipse -->
+    <ellipse cx="60" cy="50" rx="22" ry="9" fill="url(#signupGreenishTR)">
+      <animate attributeName="cy" values="50;30;50" dur="10s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Small ellipse -->
+    <ellipse cx="30" cy="70" rx="12" ry="5" fill="url(#signupGreenishTR)">
+      <animate attributeName="cy" values="70;55;70" dur="7s" repeatCount="indefinite"/>
+    </ellipse>
+  </svg>
+  <!-- Bottom Left: 3 green levitating ellipses -->
+  <svg width="220" height="120" viewBox="0 0 220 120" fill="none"
+       style="position:absolute;bottom:-30px;left:-40px;width:220px;height:120px;z-index:0;">
+    <!-- Big green ellipse -->
+    <ellipse cx="80" cy="90" rx="50" ry="20" fill="#00e676" opacity="0.25">
+      <animate attributeName="cy" values="90;70;90" dur="7s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Medium green ellipse -->
+    <ellipse cx="140" cy="70" rx="30" ry="12" fill="#00ffb0" opacity="0.32">
+      <animate attributeName="cy" values="70;90;70" dur="9s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Small green ellipse -->
+    <ellipse cx="50" cy="40" rx="18" ry="7" fill="#a9f9e1" opacity="0.38">
+      <animate attributeName="cy" values="40;55;40" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
+  </svg>
+  <!-- Bottom Right: 3 green levitating ellipses -->
+  <svg width="180" height="100" viewBox="0 0 180 100" fill="none"
+       style="position:absolute;bottom:-20px;right:-30px;width:180px;height:100px;z-index:0;">
+    <!-- Big green ellipse -->
+    <ellipse cx="120" cy="70" rx="40" ry="16" fill="#00e676" opacity="0.22">
+      <animate attributeName="cy" values="70;50;70" dur="8s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Medium green ellipse -->
+    <ellipse cx="60" cy="50" rx="22" ry="9" fill="#00ffb0" opacity="0.28">
+      <animate attributeName="cy" values="50;70;50" dur="10s" repeatCount="indefinite"/>
+    </ellipse>
+    <!-- Small green ellipse -->
+    <ellipse cx="30" cy="30" rx="12" ry="5" fill="#a9f9e1" opacity="0.34">
+      <animate attributeName="cy" values="30;45;30" dur="7s" repeatCount="indefinite"/>
+    </ellipse>
+  </svg>
+  <div style="position:relative;z-index:1;">
+    <h2>Ready to start?</h2>
+    <p>Secure your spot now—only ₹499 for the full course.</p>
+    <a href="payment.html" class="btn-primary">Enroll via Razorpay</a>
+    <p style="margin-top:10px;">Or pay via UPI: <strong>collegetips@upi</strong></p>
+    <p style="font-size:0.9em;color:#ccc;margin-top:5px;">(No extra charges, no hidden fees)</p>    
+  
+  </div>
+</section>
+ 
+  </div>
+  <footer class="footer">
+    <p>Questions? WhatsApp us at +91 70245 73333 • mail@collegetips.in</p>
+    <p>© 2025 DigiBuddy • Made in India ❤️</p>
+  </footer>
+  
+</body>
+</html>

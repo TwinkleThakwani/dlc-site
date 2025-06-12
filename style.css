@@ -354,10 +354,81 @@
         font-size: 1rem;
         margin-bottom: 18px;
       }
-      .hero-img {
-        width: 110px;
-        margin: 18px auto 6px auto;
-      }
+    .hero {
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 2vw;
+    }
+    .hero-content {
+      text-align: center;
+      max-width: 98vw;
+    }
+    .hero-content h1 {
+      font-size: 1.3rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+    }
+    .hero-float-img,
+    .hero > div[style*="position:relative"] img {
+      width: 110px !important;
+      height: 80px !important;
+      min-width: 80px !important;
+      min-height: 60px !important;
+      max-width: 38vw !important;
+      max-height: 28vw !important;
+    }
+    .hero > div[style*="position:relative"] {
+      width: 98vw !important;
+      min-width: unset !important;
+      max-width: 98vw !important;
+      height: 120px !important;
+      display: flex !important;
+      align-items: flex-end !important;
+      justify-content: center !important;
+      position: relative !important;
+      margin: 0 auto 10px auto !important;
+    }
+    .hero > div[style*="position:relative"] img {
+      position: absolute !important;
+      /* Adjust collage positions for mobile */
+    }
+    /* Main image */
+    .hero > div[style*="position:relative"] img:nth-child(1) {
+      left: 50% !important;
+      top: 30px !important;
+      transform: translateX(-50%) !important;
+      width: 120px !important;
+      height: 110px !important;
+      z-index: 2 !important;
+    }
+    /* Top left */
+    .hero > div[style*="position:relative"] img:nth-child(2) {
+      left: 58% !important;
+      top: 0 !important;
+      bottom: 50% !important;
+      width: 80px !important;
+      height: 30px !important;
+      z-index: 3 !important;
+    }
+    /* Bottom left */
+    .hero > div[style*="position:relative"] img:nth-child(3) {
+      left:25% !important;
+      bottom:-20% !important;
+      width: 80px !important;
+      height: 60px !important;
+      z-index: 3 !important;
+    }
+    /* Bottom right */
+    .hero > div[style*="position:relative"] img:nth-child(4) {
+      left: 60% !important;
+      right: 0 !important;
+      bottom: -30% !important;
+      width: 80px !important;
+      height: 60px !important;
+      z-index: 3 !important;
+    }
       .welcome {
         font-size: 1rem;
         margin: 16px auto 0 auto;

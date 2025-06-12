@@ -805,9 +805,60 @@ nav, .navbar {
   .testimonial-carousel { align-items: flex-start; }
 }
 @media (max-width: 600px) {
-  .testimonial-flex { gap: 10px; }
-  .testimonial-img-col > div { width: 140px !important; }
-  .testimonial-carousel { max-width: 98vw; }
+  .testimonial-img-col > div[style*="position:relative"] {
+    width: 98vw !important;
+    min-width: unset !important;
+    max-width: 98vw !important;
+    height: 120px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    position: relative !important;
+    margin: 0 auto 10px auto !important;
+  }
+  .testimonial-img-col > div[style*="position:relative"] img {
+    position: absolute !important;
+    width: 90px !important;
+    height: 65px !important;
+    min-width: 60px !important;
+    min-height: 40px !important;
+    max-width: 32vw !important;
+    max-height: 22vw !important;
+  }
+  /* Center main image */
+  .testimonial-img-col > div[style*="position:relative"] img:nth-child(1) {
+    left: 50% !important;
+    top: 30px !important;
+    transform: translateX(-50%) !important;
+    width: 100px !important;
+    height: 95px !important;
+    z-index: 2 !important;
+  }
+  /* Top left */
+  .testimonial-img-col > div[style*="position:relative"] img:nth-child(2) {
+    left: 35% !important;
+    top: 15% !important;
+    width: 65px !important;
+    height: 45px !important;
+    z-index: 3 !important;
+  }
+  /* Bottom left */
+  .testimonial-img-col > div[style*="position:relative"] img:nth-child(3) {
+    left: 35% !important;
+    top: 96% !important;
+    width: 65px !important;
+    height: 45px !important;
+    z-index: 3 !important;
+  }
+  /* Bottom right */
+  .testimonial-img-col > div[style*="position:relative"] img:nth-child(4) {
+    left: unset !important;
+    left: 59% !important;
+    top: 88% !important;
+    width: 65px !important;
+    height: 45px !important;
+    z-index: 3 !important;
+  }
 }
 
 /* Animations for text and headings */
